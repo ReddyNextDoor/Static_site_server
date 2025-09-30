@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Site Deployment Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Static Site Demo</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Welcome to Our Static Site</h2>
+                <p>This site is deployed using Nginx and rsync for seamless updates.</p>
+                <img src="images/demo.svg" alt="Demo Image" class="hero-image">
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About This Project</h2>
+                <p>This project demonstrates:</p>
+                <ul>
+                    <li>Docker-based Linux server setup</li>
+                    <li>SSH connectivity for remote access</li>
+                    <li>Nginx configuration for static site serving</li>
+                    <li>Automated deployment using rsync</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Deployment Info</h2>
+                <p>Server: <code>localhost:8080</code></p>
+                <p>SSH: <code>localhost:2222</code></p>
+                <p>Last updated: <span id="timestamp"></span></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Static Site Demo. Deployed with rsync.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+services:
+  nginx-server:
+    image: nginx:alpine
+    container_name: static-site-server
+    ports:
+      - "8080:80"
+      - "2222:22"
+    volumes:
+      - ./site:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssh:/etc/ssh
+    networks:
+      - web-network
+    restart: unless-stopped
+
+  ssh-server:
+    image: linuxserver/openssh-server
+    container_name: ssh-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - PUBLIC_KEY_FILE=/config/authorized_keys
+      - SUDO_ACCESS=true
+      - PASSWORD_ACCESS=true
+      - USER_PASSWORD=password123
+      - USER_NAME=deploy
+    volumes:
+      - ./ssh-config:/config
+      - ./site:/var/www/html
+    ports:
+      - "2222:2222"
+    networks:
+      - web-network
+    restart: unless-stopped
+
+networks:
+  web-network:
+    driver: bridge
